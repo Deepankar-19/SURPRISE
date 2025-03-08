@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .love-message {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+        }
+        .heart::before {
+            left: -15px;
+        }
+        .heart::after {
+            top: -15px;
+        }
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(0px);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-1000px);
+                opacity: 0;
+            }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="love-message">
+        I LOVE YOU TO THE END OF<br>THE UNIVERSE AND BACK
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
