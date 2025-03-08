@@ -67,7 +67,7 @@
             color: white;
         }
         .modal {
-            display: flex;
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -78,7 +78,6 @@
             align-items: center;
             z-index: 1000;
             animation: fadeIn 0.3s ease-out;
-            backdrop-filter: blur(8px);
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -128,18 +127,13 @@
         </div>
     </div>
 
-    <div class="modal" id="noModal" onclick="hideModal()">
+    <div class="modal" id="noModal" onclick="hideModal()" style="display: none;">
         <div class="modal-content">
             UNFORTUNATELY YOU DON'T KNOW HOW IT FEELS TO BE THE PRETTIEST GIRL EVER
         </div>
     </div>
 
     <script>
-        // Show modal immediately when page loads
-        window.onload = function() {
-            document.getElementById('noModal').style.display = 'flex';
-        }
-
         function showModal() {
             document.getElementById('noModal').style.display = 'flex';
         }
